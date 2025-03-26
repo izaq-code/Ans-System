@@ -48,8 +48,8 @@ O backend é responsável pela execução de scripts que processam e importam da
 
 2. Execute os seguintes scripts em ordem para processar e importar os dados:
    ```bash
-   python process_pdf.py    # Extração e conversão dos dados do PDF para CSV
    python scraping.py       # Web scraping e download de PDFs
+   python process_pdf.py    # Extração e conversão dos dados do PDF para CSV
    python pastas.py         # Organiza arquivos em pastas
    python csv_handler.py    # Processamento do CSV
    python db_import.py      # Importação do CSV para o MySQL
@@ -84,16 +84,6 @@ O frontend é uma aplicação Vue.js que serve como interface de usuário.
 2. Instale as dependências do projeto:
    ```bash
    npm install
-   ```
-
-3. Instale o **Vue CLI Service**:
-   ```bash
-   npm install @vue/cli-service
-   ```
-
-4. Instale o **Axios** para realizar requisições HTTP:
-   ```bash
-   npm install axios
    ```
 
 5. Inicie o servidor de desenvolvimento:
