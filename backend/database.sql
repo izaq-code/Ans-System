@@ -28,11 +28,17 @@ GROUP BY reg_ans
 ORDER BY total_despesas DESC
 LIMIT 10;
 
-SELECT reg_ans, SUM(vl_saldo_final) AS total_despesas
+SELECT reg_ans, SUM(vl_saldo_final) AS total_despesa
 FROM demonstracoes_contabeis
-WHERE descricao = 'EVENTOS/ SINISTROS CONHECIDOS OU AVISADOS DE ASSISTÊNCIA A SAÚDE'
-  AND YEAR(data) = YEAR(CURDATE()) - 1
+WHERE descricao = 'EVENTOS/SINISTROS CONHECIDOS OU AVISADOS DE ASSISTÊNCIA À SAÚDE'
+AND data BETWEEN 
+CASE
+  WHEN MONTH(CURDATE()) IN (1, 2, 3) THEN DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 1 YEAR), '%Y-10-01') -- Outubro a Dezembro do ano anterior
+  WHEN MONTH(CURDATE()) IN (4, 5, 6) THEN DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 1 QUARTER), '%Y-01-01') -- Janeiro a Março
+  WHEN MONTH(CURDATE()) IN (7, 8, 9) THEN DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 1 QUARTER), '%Y-04-01') -- Abril a Junho
+  WHEN MONTH(CURDATE()) IN (10, 11, 12) THEN DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 1 QUARTER), '%Y-07-01') -- Julho a Setembro
+END AND CURDATE()
 GROUP BY reg_ans
-ORDER BY total_despesas DESC
+ORDER BY total_despesa DESC
 LIMIT 10;
 
