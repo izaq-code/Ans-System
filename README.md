@@ -35,6 +35,36 @@ ans_system/
 ├── README.md                        # Documentação do projeto
 ```
 
+## Iniciando o Banco de Dados
+
+Antes de iniciar o backend e o frontend, certifique-se de que o banco de dados MySQL esteja rodando.
+
+1. Inicie o MySQL e crie o banco de dados, se ainda não existir:
+   ```sql
+         CREATE DATABASE ans_db;
+         USE ans_db;
+
+         CREATE TABLE operadoras (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            nome VARCHAR(255) NOT NULL,
+            cnpj VARCHAR(20) NOT NULL,
+            registro_ans VARCHAR(20) NOT NULL
+         );
+
+         CREATE TABLE IF NOT EXISTS demonstracoes_contabeis (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            ano INT NOT NULL,
+            trimestre INT NOT NULL,
+            data DATE,
+            reg_ans VARCHAR(20),
+            cd_conta_contabil VARCHAR(50),
+            descricao VARCHAR(255),
+            vl_saldo_inicial DECIMAL(15,2),
+            vl_saldo_final DECIMAL(15,2)
+         );
+   ```
+2. Confirme que o banco de dados está funcionando corretamente antes de prosseguir para os próximos passos.
+
 ### Backend
 
 O backend é responsável pela execução de scripts que processam e importam dados para um banco de dados MySQL.
@@ -86,7 +116,7 @@ O frontend é uma aplicação Vue.js que serve como interface de usuário.
    npm install
    ```
 
-5. Inicie o servidor de desenvolvimento:
+3. Inicie o servidor de desenvolvimento:
    ```bash
    npm run serve
    ```
@@ -100,11 +130,13 @@ Os dados que são baixados das operadoras são armazenados na pasta `dataset`:
 
 ### Como Usar
 
-1. Inicie o backend primeiro para garantir que a API esteja rodando.
-2. Em seguida, inicie o frontend para acessar a interface de usuário.
-3. O sistema irá processar os PDFs, extrair os dados e importá-los para o banco de dados MySQL.
-4. A interface do Vue.js permite buscar e exibir dados das operadoras processadas.
+1. **Inicie o banco de dados** antes de qualquer outro passo.
+2. **Inicie o backend** primeiro para garantir que a API esteja rodando.
+3. **Inicie o frontend** para acessar a interface de usuário.
+4. O sistema irá processar os PDFs, extrair os dados e importá-los para o banco de dados MySQL.
+5. A interface do Vue.js permite buscar e exibir dados das operadoras processadas.
 
 ### Conclusão
 
 Este projeto combina o poder do Python com Flask e o Vue.js para criar um sistema robusto para o processamento e exibição de dados. Certifique-se de seguir as instruções de instalação corretamente para garantir que tudo funcione como esperado.
+
