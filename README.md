@@ -19,19 +19,19 @@ ans_system/
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── App.vue                  # Componente principal do Vue
-│   │   ├── main.js                       # Arquivo principal do Vue.js
-│   |
+│   │   ├── App.vue             # Componente principal do Vue
+│   │   ├── main.js             # Arquivo principal do Vue.js
+│   │
 │   ├── dataset/
-│   │   ├── operadoras.csv           # Dados baixados das operadoras
-│   │   ├── anexos.zip               # PDFs baixados e compactados
+│   │   ├── operadoras.csv      # Dados baixados das operadoras
+│   │   ├── anexos.zip          # PDFs baixados e compactados
 │   │
 │   ├── public/
-│   │   ├── index.html                # Página inicial
-│   │   ├── style.css                 # Estilos globais
-│   ├── package.json                  # Dependências do Vue.js
+│   │   ├── index.html          # Página inicial
+│   │   ├── style.css           # Estilos globais
+│   ├── package.json            # Dependências do Vue.js
 │
-├── .gitignore                       
+├── .gitignore                        
 ├── README.md                        # Documentação do projeto
 ```
 
@@ -41,27 +41,27 @@ Antes de iniciar o backend e o frontend, certifique-se de que o banco de dados M
 
 1. Inicie o MySQL e crie o banco de dados, se ainda não existir:
    ```sql
-         CREATE DATABASE ans_db;
-         USE ans_db;
+   CREATE DATABASE IF NOT EXISTS ans_db;
+   USE ans_db;
 
-         CREATE TABLE operadoras (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            nome VARCHAR(255) NOT NULL,
-            cnpj VARCHAR(20) NOT NULL,
-            registro_ans VARCHAR(20) NOT NULL
-         );
+   CREATE TABLE IF NOT EXISTS operadoras (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      nome VARCHAR(255) NOT NULL,
+      cnpj VARCHAR(20) NOT NULL,
+      registro_ans VARCHAR(20) NOT NULL
+   );
 
-         CREATE TABLE IF NOT EXISTS demonstracoes_contabeis (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            ano INT NOT NULL,
-            trimestre INT NOT NULL,
-            data DATE,
-            reg_ans VARCHAR(20),
-            cd_conta_contabil VARCHAR(50),
-            descricao VARCHAR(255),
-            vl_saldo_inicial DECIMAL(15,2),
-            vl_saldo_final DECIMAL(15,2)
-         );
+   CREATE TABLE IF NOT EXISTS demonstracoes_contabeis (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      ano INT NOT NULL,
+      trimestre INT NOT NULL,
+      data DATE,
+      reg_ans VARCHAR(20),
+      cd_conta_contabil VARCHAR(50),
+      descricao VARCHAR(255),
+      vl_saldo_inicial DECIMAL(15,2),
+      vl_saldo_final DECIMAL(15,2)
+   );
    ```
 2. Confirme que o banco de dados está funcionando corretamente antes de prosseguir para os próximos passos.
 
@@ -96,9 +96,9 @@ O backend é responsável pela execução de scripts que processam e importam da
    ```
    
 5. Volte até a pasta `backend`:
-  ```bash
+   ```bash
    cd ..  
- ```
+   ```
 6. Inicie o servidor Flask:
    ```bash
    python app.py
@@ -122,9 +122,8 @@ O frontend é uma aplicação Vue.js que serve como interface de usuário.
 
 3. Inicie o servidor de desenvolvimento:
    ```bash
-   npm run serve
+   npm run serve  
    ```
-
 ### Dataset
 
 Os dados que são baixados das operadoras são armazenados na pasta `dataset`:
