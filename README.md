@@ -71,12 +71,22 @@ O backend é responsável pela execução de scripts que processam e importam da
 
 #### Passos para iniciar o backend
 
-1. Navegue até a pasta `backend/scripts`:
+1. Navegue até a pasta `backend`:
    ```bash
-   cd backend/scripts
+   cd backend
    ```
 
-2. Execute os seguintes scripts em ordem para processar e importar os dados:
+2. Instale as dependências do Python:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Navegue até a pasta `backend/scripts`:
+   ```bash
+   cd scripts
+   ```
+
+4. Execute os seguintes scripts em ordem para processar e importar os dados:
    ```bash
    python scraping.py       # Web scraping e download de PDFs
    python process_pdf.py    # Extração e conversão dos dados do PDF para CSV
@@ -84,18 +94,12 @@ O backend é responsável pela execução de scripts que processam e importam da
    python csv_handler.py    # Processamento do CSV
    python db_import.py      # Importação do CSV para o MySQL
    ```
-
-3. Navegue até a pasta `backend`:
-   ```bash
-   cd backend
-   ```
-
-4. Instale as dependências do Python:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-5. Inicie o servidor Flask:
+   
+5. Volte até a pasta `backend`:
+  ```bash
+   cd ..  
+ ```
+6. Inicie o servidor Flask:
    ```bash
    python app.py
    ```
